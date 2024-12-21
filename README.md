@@ -13,7 +13,7 @@ By the end of this project, you will be able to:
 - Load the transformed data into a CSV file for future use in databases.
 - Log the progress of ETL operations for monitoring purposes.
 
-
+![](ETL_workflow.png)
 
 ## Technologies Used:
 - **Programming Language:** Python
