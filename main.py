@@ -6,10 +6,22 @@ from script.load import load_data
 import logging
 import pandas as pd
 
+def setup_logging():
+    """Set up logging configuration with a blank line between script runs."""
+    # Open the log file in append mode and add a separator for each new run
+    with open('A-Comprehensive-ETL-Workflow-with-Python-for-Data-Engineers/logs/etl_process.log', 'a') as log_file:
+        log_file.write("\n\n--- New ETL Process Run ---\n")
+
+    # Configure logging settings
+    logging.basicConfig(
+        level=logging.INFO,
+        filename='A-Comprehensive-ETL-Workflow-with-Python-for-Data-Engineers/logs/etl_process.log',
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        filemode='a'  # Append mode
+    )
+
 def main():
-    # Configure logging
-    logging.basicConfig(level=logging.INFO, filename='A-Comprehensive-ETL-Workflow-with-Python-for-Data-Engineers/logs/etl_process.log',
-                        format='%(asctime)s - %(levelname)s - %(message)s')
+    setup_logging()
     logging.info('Starting ETL process')
     
     # Extraction
@@ -32,7 +44,7 @@ def main():
 
     # Loading
     logging.info('Loading transformed data into output...')
-    load_data(transformed_data, 'A-Comprehensive-ETL-Workflow-with-Python-for-Data-Engineers/transformed/transformed_data.csv')
+    load_data(transformed_data, 'A-Comprehensive-ETL-Workflow-with-Python-for-Data-Engineers/output/transformed_data.csv')
     logging.info('Data loading complete')
 
 if __name__ == '__main__':
